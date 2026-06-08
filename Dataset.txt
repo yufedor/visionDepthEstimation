@@ -1,0 +1,33 @@
+# Dataset — CIFAR-10
+
+
+## Automatic download
+`torchvision` handles the download automatically when the notebook runs:
+
+```python
+from torchvision import datasets, transforms
+
+dataset = datasets.CIFAR10(
+    root='./data',
+    train=True,
+    download=True,          # downloads on first run to ./data/
+    transform=transforms.Compose([
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),  # → [-1, 1]
+    ])
+)
+```
+
+Files are saved to `./data/cifar-10-batches-py/`.
+
+
+## Manual download (offline environments)
+
+1. Download the Python version directly:  
+   https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+
+2. Extract to `./data/`:
+   ```bash
+   tar -xzf cifar-10-python.tar.gz -C ./data/
+   ```
